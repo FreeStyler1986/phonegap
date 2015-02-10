@@ -1,0 +1,168 @@
+{
+    // Schema version. Required to detect out of date .stlive.json files.
+    "_schema": "2.0",
+
+    // ALL the properties in this file can be used as 'stlive' command line options  (e.g. --run will set options.run = true)
+
+    // ** `stlive create` AND `stlive build` OPTIONS **
+
+    "sdk": "d:/wamp/www/touch-2.4.1",
+    "cmd": "sencha-5.1.1.39",
+
+    // Deploy and run the mobile app
+    "run": false,
+
+    // ** `stlive create` only OPTIONS **
+
+    // NOTE: These options are COPIED into NEW Projects created by stlive
+    //       They won't affect existing projects.
+
+    // Copied into config.xml file and used in commands
+    "appDomain": "com.rl",
+    "appName": "phTest3",
+    "author": {
+        "name": "Your Name",
+        "web": "http://YourWebSite.com",
+        "email": "support@YourWebSite.com"
+    },
+
+    // if false, removes Readme.md files that Sencha Cmd adds to new project folders.
+    "readme": false,
+
+    // Copied into phonegap.local.properties file
+    "build": {
+        "remote": "false",  // Enable PhoneGap build service for new projects
+        "username": "Your PhoneGap Build Username",
+        "password": "Your PhoneGap Build Password"
+    },
+
+    // Adds live update client into a new app
+    "live": true,
+
+    // PhoneGap platforms in new projects
+    "platforms": [
+        "android"
+        //,"ios"
+        //,"wp8"
+    ],
+
+    // PhoneGap plugins in new projects
+    "plugins": [
+        // Ref: http://docs.phonegap.com/en/3.4.0/guide_cli_index.md.html
+        // Additional Plugins: http://plugins.cordova.io////
+
+        // ** REQUIRED BY LIVE UPDATE APP **
+
+        // Basic device information (Device API):
+        "org.apache.cordova.device",
+
+        // Access files on device or network (File API):
+        "org.apache.cordova.file",
+
+        // Insomnia - Keep app alive
+        "https://github.com/EddyVerbruggen/Insomnia-PhoneGap-Plugin.git",
+
+        // Splashscreen:
+        "org.apache.cordova.splashscreen",
+
+        // Barcode & QR Code scanner / generator
+        // Alternatives: http://plugins.cordova.io////search?search=barcode
+        // com.phonegap.plugins.barcodescanner
+        "http://github.com/phonegap-build/BarcodeScanner.git",
+
+        // ** REQUIRED BY YOUR APP **
+
+        // Network Connection and Battery Events:
+        "org.apache.cordova.network-information",
+        // "org.apache.cordova.battery-status",
+
+        // Accelerometer, Compass, and Geolocation:
+        //"org.apache.cordova.device-motion",
+        "org.apache.cordova.device-orientation",
+        // "org.apache.cordova.geolocation",
+
+        // Camera, Media playback and Capture:
+        "org.apache.cordova.camera",
+        "org.apache.cordova.media-capture",
+        "org.apache.cordova.media",
+
+        // Transfer files to/from network:
+        "org.apache.cordova.file-transfer",
+
+        // Notification via dialog box or vibration:
+        // "org.apache.cordova.dialogs",
+        // "org.apache.cordova.vibration",
+
+        // Contacts:
+        // "org.apache.cordova.contacts",
+
+        // Globalization:
+        // "org.apache.cordova.globalization",
+
+        // Open new browser windows (InAppBrowser):
+        // "org.apache.cordova.inappbrowser",
+
+        // Debug console for Android versions that ignore additional args to console.log()
+        // "org.apache.cordova.console",
+
+        // SQLite
+        "https://github.com/brodysoft/Cordova-SQLitePlugin.git"
+    ],
+
+    // ** `stlive serve` OPTIONS **
+
+    "port": 3000,
+
+    // Enabled sever reload
+    "autoreload": true,
+
+    // Connects server to http://<random>.localtunnel.me via an encrypted tunnel.
+    "localtunnel": false,
+
+    // Display Server URL as a QR Code
+    "qr": false,
+
+    // Auto starts SASS compiler with server. Check the path in bgtasks.sass.cmd
+    "sass": false,
+
+    // Background tasks (SASS, Less, CoffeeScript, Typescript whatever ....)
+    // Enabled using corresponding top level key (e.g. options.sass: true - enables SASS compiler)
+    "bgtasks": {
+        "sass": {
+            "name": "Compass SASS Compiler",
+            "cmd": "C:/Ruby200-x64/bin/compass.bat watch -c config.rb app.scss",
+            "dir": "resources/sass",
+            "success": "Compass is polling"   // Output when compiler starts ok
+        }
+    },
+
+    // Server session secret - Replace with a random string.
+    "sessionSecret": "**REPLACE**",
+
+    // Files that trigger auto reload.
+    "watch": {
+        "sencha": [
+            "index.html",
+            "app.js",
+            "app.json",
+            "bootstrap.js",
+            "bootstrap.json",
+            "app/**/*.js",
+            "app/**/*.json",
+            "app/**/*.html",
+            "resources/css/**",
+            "resources/images/**",
+            "resources/icons/**",
+            "resources/startup/**"
+        ],
+        "cordova": [
+            "www/**"
+        ]
+    },
+
+    // ** Development options  **
+    "logLevel": 2,  // 1=DEBUG, 2=INFO, 3=WARN, 4=ERROR, 5=CRITICAL
+
+    // WARNING: stlive create: Kills Android 'adb' and deletes existing project if it exists
+    "deleteAppDir": false
+}
